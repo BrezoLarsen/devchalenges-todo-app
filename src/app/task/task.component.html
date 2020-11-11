@@ -1,4 +1,5 @@
-<div class="c-task">
-  <input class="c-task__input" type="checkbox">
+<div class="c-task"[ngClass]="{'is-done': isDone}">
+  <input class="c-task__input" type="checkbox" [checked]="isDone">
   <span class="c-task__text">Do coding challenges</span>
+  <span *ngIf="isDone" class="c-task__icon material-icons" (click)="deleteTask()">delete_outline</span>
 </div>

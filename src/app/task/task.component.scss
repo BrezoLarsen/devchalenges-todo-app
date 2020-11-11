@@ -1,6 +1,8 @@
 .c-task {
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: 25px 1fr 25px;
+  grid-gap: 7px;
   margin-top: 30px;
   &__input {
     width: 24px;
@@ -13,5 +15,14 @@
     font-weight: 500;
     font-size: 18px;
     color: #333333;
+  }
+  &__icon {
+    color: #BDBDBD;
+    cursor: pointer;
+  }
+  &.is-done {
+    .c-task__text {
+      text-decoration: line-through;
+    }
   }
 }
