@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task } from '../interfaces/task';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -6,13 +7,17 @@ import { TaskService } from '../services/task.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
-  @Input() isDone: boolean = false;
+  @Input() task: Task;
+  @Input() showTrashIcon: boolean;
 
-  constructor(private taskService: TaskService) { }
+  constructor(public taskService: TaskService) { }
 
-  ngOnInit(): void {
+  setTaskAsCompleted() {
+    this.task.isDone = true;
+    this.taskService.completedTaskArray.push(this.task);
+    this.taskService.orderTasks();
   }
 
   deleteTask() {

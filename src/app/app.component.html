@@ -8,13 +8,21 @@
     </div>
     <div class="c-todo__tab-content" *ngIf="activeTab === 1">
       <app-addbox></app-addbox>
-      <app-task></app-task>
+      <div *ngFor="let task of taskService.taskArray">
+        <app-task [task]="task" [showTrashIcon]=false></app-task>
+      </div>
     </div>
     <div class="c-todo__tab-content" *ngIf="activeTab === 2">
       <app-addbox></app-addbox>
+      <div *ngFor="let task of taskService.taskArray">
+        <app-task [task]="task" *ngIf="!task.isDone"></app-task>
+      </div>
     </div>
     <div class="c-todo__tab-content" *ngIf="activeTab === 3">
-      <app-task [isDone]=true></app-task>
+      <div *ngFor="let task of taskService.completedTaskArray">
+        <app-task [task]="task" *ngIf="task.isDone" [showTrashIcon]=true></app-task>
+      </div>
+      <div *ngIf="taskService.completedTaskArray.length > 0" class="c-todo__delete-all" (click)="deleteAllTasks()"><span class="c-todo__delete-all-icon material-icons">delete_outline</span> delete all</div>
     </div>
   </div>
 </div>
