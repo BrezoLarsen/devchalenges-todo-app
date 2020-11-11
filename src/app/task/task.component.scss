@@ -1,0 +1,17 @@
+.c-task {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  &__input {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    margin-right: 7px;
+  }
+  &__text {
+    font-family: var(--main-font);
+    font-weight: 500;
+    font-size: 18px;
+    color: #333333;
+  }
+}

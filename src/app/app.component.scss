@@ -1,0 +1,33 @@
+.c-todo {
+  &__content {
+    max-width: 650px;
+    margin: 30px auto;
+  }
+  &__title {
+    font-family: var(--title-font);
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -0.045em;
+    color: var(--grey);
+  }
+  &__tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: space-around;
+    margin: 50px 0 0;
+    padding: 15px 0;
+    border-bottom: 1px solid #BDBDBD;
+  }
+  &__tab {
+    text-align: center;
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--grey);
+    cursor: pointer;
+  }
+  &__tab-content {
+    padding: 20px 0;
+  }
+}

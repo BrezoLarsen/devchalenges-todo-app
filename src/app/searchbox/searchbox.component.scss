@@ -1,0 +1,35 @@
+.c-searchbox{
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  grid-gap: 25px;
+  align-items: center;
+  &__input {
+    height: 56px;
+    appearance: none;
+    outline: none;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 0 12px;
+
+    font-family: var(--main-font);
+    font-size: 14px;
+    line-height: 17px;
+    color: #828282;
+  }
+  &__button {
+    width: 109px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    background: #2F80ED;
+    box-shadow: 0px 2px 6px rgba(127, 177, 243, 0.4);
+    border-radius: 12px;
+
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+}
