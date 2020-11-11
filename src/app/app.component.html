@@ -2,17 +2,17 @@
   <div class="c-todo__content">
     <div class="c-todo__title">#todo</div>
     <div class="c-todo__tabs">
-      <div class="c-todo__tab">All</div>
-      <div class="c-todo__tab">Active</div>
-      <div class="c-todo__tab">Completed</div>
+      <div class="c-todo__tab {{activeTab === 1 ? 'is-active' : ''}}" (click)="setActive(1)">All</div>
+      <div class="c-todo__tab {{activeTab === 2 ? 'is-active' : ''}}" (click)="setActive(2)">Active</div>
+      <div class="c-todo__tab {{activeTab === 3 ? 'is-active' : ''}}" (click)="setActive(3)">Completed</div>
     </div>
-    <div class="c-todo__tab-content">
+    <div class="c-todo__tab-content" *ngIf="activeTab === 1">
       <app-searchbox></app-searchbox>
       <app-task></app-task>
     </div>
-    <div class="c-todo__tab-content">
+    <div class="c-todo__tab-content" *ngIf="activeTab === 2">
       <app-searchbox></app-searchbox>
     </div>
-    <div class="c-todo__tab-content"></div>
+    <div class="c-todo__tab-content" *ngIf="activeTab === 3"></div>
   </div>
 </div>

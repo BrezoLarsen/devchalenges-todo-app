@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  public activeTab: number = 1;
+
+  setActive(tab: number) {
+    this.activeTab = tab;
+  }
+
 }

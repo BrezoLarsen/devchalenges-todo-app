@@ -13,10 +13,10 @@
   &__tabs {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-around;
-    margin: 50px 0 0;
-    padding: 15px 0;
+    margin: 50px 0 15px;
+    padding: 15px 0 5px;
     border-bottom: 1px solid #BDBDBD;
   }
   &__tab {
@@ -26,6 +26,19 @@
     font-size: 14px;
     color: var(--grey);
     cursor: pointer;
+    &.is-active {
+      &::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 4px;
+        margin: auto;
+        position: relative;
+        bottom: -5px;
+        background: #2F80ED;
+        border-radius: 4px 4px 0px 0px;
+      }
+    }
   }
   &__tab-content {
     padding: 20px 0;
