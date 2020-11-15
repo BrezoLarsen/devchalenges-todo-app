@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskService } from './services/task.service';
 
 @Component({
@@ -6,11 +6,15 @@ import { TaskService } from './services/task.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public activeTab: number = 1;
 
   constructor(public taskService: TaskService) { }
+
+  ngOnInit() {
+    this.taskService.getTasks();
+  }
 
   setActive(tab: number) {
     this.activeTab = tab;

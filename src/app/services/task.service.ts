@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,17 +7,23 @@ import { Injectable } from '@angular/core';
 
 export class TaskService {
 
-  public taskArray: any = [];
+  public taskArray: any;
   public completedTaskArray: any = [];
 
-  constructor() { }
+  constructor(private localStorage: LocalStorageService) { }
 
-  orderTasks() {
-    this.taskArray.sort((a, b) => (a.isDone > b.isDone) ? 1 : -1);
+  getTasks() {
+    if (this.localStorage.get('task') !== null) {
+      this.taskArray = this.localStorage.get('task');
+      this.completedTaskArray = this.taskArray;
+    } else {
+      this.taskArray = [];
+    }
   }
 
   addTask(task) {
     this.taskArray.push(task);
+    this.localStorage.set('task', this.taskArray);
   }
 
   removeTask() {
@@ -28,6 +35,19 @@ export class TaskService {
 
   deleteAllTasks() {
     this.completedTaskArray = [];
+  }
+
+  orderTasks() {
+    this.taskArray.sort((a, b) => (a.isDone > b.isDone) ? 1 : -1);
+  }
+
+  setTaskAsDone(task) {
+    this.completedTaskArray.push(task);
+    this.orderTasks();
+    const taskFromInternalStorage = this.localStorage.get('task');
+    taskFromInternalStorage[task.id].isDone = true;
+    this.localStorage.set('task', taskFromInternalStorage);
+    this.completedTaskArray = this.localStorage.get('task');
   }
 
 }
